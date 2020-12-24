@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package voice;
+
+service VoiceToText {
+    rpc GetText(StreamRequest) returns (StreamResponse) {};
+}
+
+message StreamRequest {
+    bytes stream = 1;
+    string session_hash = 2;
+}
+
+message StreamResponse {
+    string message = 1;
+    string session_hash = 2;
+}
