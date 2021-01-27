@@ -19,31 +19,38 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\tapi.proto\x12\x05voice\"5\n\rStreamRequest\x12\x0e\n\x06stream\x18\x01 \x01(\x0c\x12\x14\n\x0csession_hash\x18\x02 \x01(\t\"7\n\x0eStreamResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x14\n\x0csession_hash\x18\x02 \x01(\t2G\n\x0bVoiceToText\x12\x38\n\x07GetText\x12\x14.voice.StreamRequest\x1a\x15.voice.StreamResponse\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\tapi.proto\x12\x05voice\"E\n\x0eGetTextRequest\x12\x0e\n\x06stream\x18\x01 \x01(\x0c\x12\x0f\n\x07\x62itrate\x18\x02 \x01(\x02\x12\x12\n\nsampleRate\x18\x03 \x01(\x05\"\"\n\x0fGetTextResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2M\n\x0fVoiceRecognizer\x12:\n\x07GetText\x12\x15.voice.GetTextRequest\x1a\x16.voice.GetTextResponse\"\x00\x62\x06proto3'
 )
 
 
 
 
-_STREAMREQUEST = _descriptor.Descriptor(
-  name='StreamRequest',
-  full_name='voice.StreamRequest',
+_GETTEXTREQUEST = _descriptor.Descriptor(
+  name='GetTextRequest',
+  full_name='voice.GetTextRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='stream', full_name='voice.StreamRequest.stream', index=0,
+      name='stream', full_name='voice.GetTextRequest.stream', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=b"",
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='session_hash', full_name='voice.StreamRequest.session_hash', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
+      name='bitrate', full_name='voice.GetTextRequest.bitrate', index=1,
+      number=2, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='sampleRate', full_name='voice.GetTextRequest.sampleRate', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -60,28 +67,21 @@ _STREAMREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=20,
-  serialized_end=73,
+  serialized_end=89,
 )
 
 
-_STREAMRESPONSE = _descriptor.Descriptor(
-  name='StreamResponse',
-  full_name='voice.StreamResponse',
+_GETTEXTRESPONSE = _descriptor.Descriptor(
+  name='GetTextResponse',
+  full_name='voice.GetTextResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='voice.StreamResponse.message', index=0,
+      name='message', full_name='voice.GetTextResponse.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='session_hash', full_name='voice.StreamResponse.session_hash', index=1,
-      number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -98,53 +98,53 @@ _STREAMRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=75,
-  serialized_end=130,
+  serialized_start=91,
+  serialized_end=125,
 )
 
-DESCRIPTOR.message_types_by_name['StreamRequest'] = _STREAMREQUEST
-DESCRIPTOR.message_types_by_name['StreamResponse'] = _STREAMRESPONSE
+DESCRIPTOR.message_types_by_name['GetTextRequest'] = _GETTEXTREQUEST
+DESCRIPTOR.message_types_by_name['GetTextResponse'] = _GETTEXTRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-StreamRequest = _reflection.GeneratedProtocolMessageType('StreamRequest', (_message.Message,), {
-  'DESCRIPTOR' : _STREAMREQUEST,
+GetTextRequest = _reflection.GeneratedProtocolMessageType('GetTextRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETTEXTREQUEST,
   '__module__' : 'api_pb2'
-  # @@protoc_insertion_point(class_scope:voice.StreamRequest)
+  # @@protoc_insertion_point(class_scope:voice.GetTextRequest)
   })
-_sym_db.RegisterMessage(StreamRequest)
+_sym_db.RegisterMessage(GetTextRequest)
 
-StreamResponse = _reflection.GeneratedProtocolMessageType('StreamResponse', (_message.Message,), {
-  'DESCRIPTOR' : _STREAMRESPONSE,
+GetTextResponse = _reflection.GeneratedProtocolMessageType('GetTextResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETTEXTRESPONSE,
   '__module__' : 'api_pb2'
-  # @@protoc_insertion_point(class_scope:voice.StreamResponse)
+  # @@protoc_insertion_point(class_scope:voice.GetTextResponse)
   })
-_sym_db.RegisterMessage(StreamResponse)
+_sym_db.RegisterMessage(GetTextResponse)
 
 
 
-_VOICETOTEXT = _descriptor.ServiceDescriptor(
-  name='VoiceToText',
-  full_name='voice.VoiceToText',
+_VOICERECOGNIZER = _descriptor.ServiceDescriptor(
+  name='VoiceRecognizer',
+  full_name='voice.VoiceRecognizer',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=132,
-  serialized_end=203,
+  serialized_start=127,
+  serialized_end=204,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetText',
-    full_name='voice.VoiceToText.GetText',
+    full_name='voice.VoiceRecognizer.GetText',
     index=0,
     containing_service=None,
-    input_type=_STREAMREQUEST,
-    output_type=_STREAMRESPONSE,
+    input_type=_GETTEXTREQUEST,
+    output_type=_GETTEXTRESPONSE,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
 ])
-_sym_db.RegisterServiceDescriptor(_VOICETOTEXT)
+_sym_db.RegisterServiceDescriptor(_VOICERECOGNIZER)
 
-DESCRIPTOR.services_by_name['VoiceToText'] = _VOICETOTEXT
+DESCRIPTOR.services_by_name['VoiceRecognizer'] = _VOICERECOGNIZER
 
 # @@protoc_insertion_point(module_scope)

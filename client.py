@@ -13,15 +13,17 @@ def run():
     stream = p.open(format=pyaudio.paInt16, channels=1, rate=16000, input=True, frames_per_buffer=8000)
     stream.start_stream()
     with grpc.insecure_channel("localhost:9020") as chanel:
-        stub = api.VoiceToTextStub(chanel)
+        stub = api.VoiceRecognizerStub(chanel)
         while True:
             try:
                 data = stream.read(4000)
-                req = api_model.StreamRequest()
+                req = api_model.GetTextRequest()
                 req.stream = data
-                req.session_hash = "time"+str(time.time())
+                req.bitrate = 0
+                req.sampleRate = 16000
                 response = stub.GetText(req)
-                print(response.message)
+                if response.message != "":
+                    print(response.message)
             except KeyboardInterrupt:
                 print("Stoped")
                 chanel.unsubscribe(close)

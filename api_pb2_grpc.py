@@ -5,7 +5,7 @@ import grpc
 import api_pb2 as api__pb2
 
 
-class VoiceToTextStub(object):
+class VoiceRecognizerStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -15,13 +15,13 @@ class VoiceToTextStub(object):
             channel: A grpc.Channel.
         """
         self.GetText = channel.unary_unary(
-                '/voice.VoiceToText/GetText',
-                request_serializer=api__pb2.StreamRequest.SerializeToString,
-                response_deserializer=api__pb2.StreamResponse.FromString,
+                '/voice.VoiceRecognizer/GetText',
+                request_serializer=api__pb2.GetTextRequest.SerializeToString,
+                response_deserializer=api__pb2.GetTextResponse.FromString,
                 )
 
 
-class VoiceToTextServicer(object):
+class VoiceRecognizerServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetText(self, request, context):
@@ -31,21 +31,21 @@ class VoiceToTextServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_VoiceToTextServicer_to_server(servicer, server):
+def add_VoiceRecognizerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetText': grpc.unary_unary_rpc_method_handler(
                     servicer.GetText,
-                    request_deserializer=api__pb2.StreamRequest.FromString,
-                    response_serializer=api__pb2.StreamResponse.SerializeToString,
+                    request_deserializer=api__pb2.GetTextRequest.FromString,
+                    response_serializer=api__pb2.GetTextResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'voice.VoiceToText', rpc_method_handlers)
+            'voice.VoiceRecognizer', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class VoiceToText(object):
+class VoiceRecognizer(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
@@ -59,8 +59,8 @@ class VoiceToText(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/voice.VoiceToText/GetText',
-            api__pb2.StreamRequest.SerializeToString,
-            api__pb2.StreamResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/voice.VoiceRecognizer/GetText',
+            api__pb2.GetTextRequest.SerializeToString,
+            api__pb2.GetTextResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

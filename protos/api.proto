@@ -2,16 +2,16 @@ syntax = "proto3";
 
 package voice;
 
-service VoiceToText {
-    rpc GetText(StreamRequest) returns (StreamResponse) {};
+service VoiceRecognizer {
+    rpc GetText(GetTextRequest) returns (GetTextResponse) {};
 }
 
-message StreamRequest {
+message GetTextRequest {
     bytes stream = 1;
-    string session_hash = 2;
+    float bitrate = 2;
+    int32 sampleRate = 3;
 }
 
-message StreamResponse {
+message GetTextResponse {
     string message = 1;
-    string session_hash = 2;
 }
